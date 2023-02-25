@@ -1,9 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Feed.css";
+import CreateIcon from '@mui/icons-material/Create';
+import InputOption from './InputOption';
+import ImageIcon from '@mui/icons-material/Image';
+import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay';
+import Post from './Post';
 
 function Feed() {
+   const [posts, setPosts] = useState([])
+
+   const sendPost = e => {
+      e.preventDefault();
+
+      
+   }
+
   return (
-    <div className="feed"></div>
+    <div className="feed">
+      <div className="feed-inputContainer">
+        <div className="feed-input">
+            <CreateIcon />
+            <form action="">
+               <input type="text" name="" id="" />
+               <button onClick={sendPost} type='submit'>Send</button>
+            </form>
+        </div>
+        <div className="feed-inputOptions">
+            <InputOption Icon={ImageIcon} title="Photo" color="#70b5f9"/>
+            <InputOption Icon={SubscriptionsIcon} title="Video" color="#e7a33e"/>
+            <InputOption Icon={EventNoteIcon} title="Event" color="#c0cbcd"/>
+            <InputOption Icon={CalendarViewDayIcon} title="Write Article" color="#7fc15e"/>
+        </div>
+      </div>
+
+      {/* Posts */}
+      {posts.map((post) => (
+         <Post />
+      ))}
+      <Post name="Mark Shin" description='This is a test' message='WOW this works' />
+
+    </div>
   )
 }
 
